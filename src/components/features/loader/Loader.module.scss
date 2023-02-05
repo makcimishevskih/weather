@@ -1,0 +1,18 @@
+.loader {
+  position: absolute;
+  margin: 0 auto;
+  display: inline-block;
+  border-radius: 50%;
+  border: 6px solid white;
+  border-color: rgb(235, 235, 247) transparent rgb(235, 235, 247) transparent;
+  animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,43 @@
+@import "../../../../utils/vars/vars.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  position: relative;
+
+  padding: 10px 20px;
+
+  background-color: rgba(98, 232, 255, 0.5);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  font-weight: 600;
+  .navigation {
+    .navigationList {
+      display: flex;
+      .navigationItem {
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  .loginBtnGroup {
+    button {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+    // font-size: 1rem;
+    .registrationBtn {
+      margin-right: 10px;
+      padding: 5px 15px;
+      background-color: transparent;
+      color: rgba(0, 0, 0, 1);
+    }
+    .enterBtn {
+      padding: 5px 15px;
+      color: red;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import "../../../../utils/vars/vars.scss";
+
+.thead {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 90%;
+    transform: translateX(-50%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  tr {
+    th {
+      padding: 5px 15px;
+
+      font-size: 0.9rem;
+      color: rgba(0, 0, 0, 0.5);
+      .title {
+        display: flex;
+        align-items: center;
+
+        font-size: 3rem;
+        font-weight: 500;
+        div {
+          padding: 5px 10px 0 10px;
+          span {
+            display: flex;
+
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}

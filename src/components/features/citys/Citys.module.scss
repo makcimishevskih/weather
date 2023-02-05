@@ -1,0 +1,36 @@
+@import "../../../utils/vars/vars.scss";
+
+.weatherAnotherCitys {
+  padding: 20px;
+  flex-basis: 40%;
+
+  background: $main-background-color;
+  border-radius: $main-border-radius;
+  .cityTitle {
+    margin-bottom: 10px;
+  }
+  .cityList {
+    .cityItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      .cityTemp {
+        text-align: right;
+      }
+      .cityIconWrapper {
+        max-width: 40px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .city {
+        width: 120px;
+      }
+    }
+  }
+}

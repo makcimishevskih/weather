@@ -1,0 +1,105 @@
+@import "./utils/vars/vars.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: $font-size;
+  color: $main-color;
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+input {
+  outline: none;
+}
+
+input,
+button {
+  border: none;
+  border-radius: 10px;
+  transition: 0.2s all ease-out;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+button {
+  padding: 5px 15px;
+  background-color: $btn-background-color;
+  color: $btn-color;
+  outline: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+}
+
+button:hover,
+a:hover {
+  color: lighten(rgba(0, 0, 0, 1), 30%);
+}
+
+// SWIPER
+.swiper {
+  overflow: auto;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 50px !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: "" !important;
+  background: url("./assets/icons/arrow.png") no-repeat 50% 50% / cover;
+  width: 100% !important;
+  height: 100% !important;
+}
+.swiper-button-next::after {
+  transform: rotate(180deg);
+}
+.swiper-button-prev::after {
+}
+
+.swiper-scrollbar {
+  margin-top: 20px !important;
+  bottom: 0% !important;
+}
+
+// STYLES
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.outlet {
+  min-height: 100%;
+  flex-grow: 1;
+  margin-bottom: $main-margin-bottom;
+}

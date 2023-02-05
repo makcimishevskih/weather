@@ -1,0 +1,11 @@
+@import "../../../utils/vars/vars.scss";
+
+.content {
+  padding: 20px 0;
+
+  .weatherToday {
+    max-height: 350px;
+    display: flex;
+    margin-bottom: $main-margin-bottom;
+  }
+}

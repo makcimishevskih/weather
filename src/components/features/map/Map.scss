@@ -1,0 +1,14 @@
+@import "../../../utils/vars/vars.scss";
+
+.map-wrapper {
+  flex-basis: 30%;
+  background: rgba(255, 0, 255, 0.5);
+  border-radius: $main-border-radius;
+  overflow: hidden;
+}
+
+#map,
+#map-container {
+  height: 100%;
+  width: 100%;
+}

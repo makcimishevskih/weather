@@ -1,0 +1,112 @@
+@import "../../../utils/vars/vars.scss";
+
+.currentWeather {
+  flex-grow: 1;
+  border-radius: $main-border-radius;
+  overflow: hidden;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.8);
+  margin-right: 10px;
+
+  .subtitle {
+    font-size: 0.9em;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-bottom: 15px;
+  }
+
+  .weatherInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    .weather {
+      display: flex;
+      align-items: center;
+      .weatherDegree {
+        font-size: 3rem;
+        margin-right: 10px;
+        &:after {
+          content: "\00B0";
+          font-weight: 800;
+        }
+      }
+      .imgWrapper {
+        margin-right: 10px;
+        .weatherImg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .weatherText {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.95rem;
+      & span:last-child {
+        opacity: 0.6;
+        &:after {
+          content: "\00B0";
+          font-weight: 800;
+        }
+      }
+    }
+  }
+
+  .weatherData {
+    display: flex;
+    justify-content: flex-start;
+
+    padding: 0 30px 20px;
+    margin-bottom: $main-margin-bottom;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+    .wind,
+    .humidity,
+    .pressure {
+      position: relative;
+      font-weight: 600;
+    }
+    .wind:before,
+    .humidity:before,
+    .pressure:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 20px;
+      height: 20px;
+
+      opacity: 0.5;
+    }
+
+    .wind {
+      &:before {
+        left: -50%;
+        background: url("../../../assets/icons/wind.png") no-repeat 50% 50% /
+          cover;
+      }
+    }
+
+    .humidity {
+      &:before {
+        left: -100%;
+        background: url("../../../assets/icons/humidity.png") no-repeat 50% 50% /
+          cover;
+      }
+    }
+
+    .pressure {
+      &:before {
+        left: -50%;
+        background: url("../../../assets/icons/pressure.png") no-repeat 50% 50% /
+          cover;
+      }
+    }
+    & span:not(:last-child) {
+      margin-right: 10%;
+    }
+  }
+}

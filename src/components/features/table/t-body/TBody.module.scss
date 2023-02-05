@@ -1,0 +1,51 @@
+@import "../../../../utils/vars/vars.scss";
+
+.tbody {
+  position: relative;
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  &:after {
+    right: 0px;
+    top: 50%;
+
+    width: 1px;
+    height: 85%;
+    transform: translateY(-50%);
+  }
+  &:before {
+    left: 50%;
+    bottom: 0;
+
+    width: 90%;
+    height: 1px;
+    transform: translateX(-50%);
+  }
+  tr {
+    .dayTime {
+      opacity: 0.5;
+    }
+    td {
+      padding: 0px 15px;
+
+      font-size: 0.95rem;
+      &:first-child {
+        text-align: center;
+      }
+    }
+    .conditionText {
+      max-width: 100px;
+      min-width: 80px;
+    }
+    .feelsLike,
+    .dayTemp {
+      &:after {
+        content: "\00B0";
+        font-weight: 500;
+      }
+    }
+  }
+}

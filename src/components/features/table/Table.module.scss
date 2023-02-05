@@ -1,0 +1,19 @@
+@import "../../../utils/vars/vars.scss";
+
+.tableWrapper {
+  overflow: hidden;
+  background: $main-background-color;
+  border-radius: $main-border-radius;
+  .tableFlex {
+    display: flex;
+    table {
+      border-collapse: collapse;
+    }
+  }
+  .uv {
+    font-weight: 600;
+    padding: 15px 0px 15px 20%;
+
+    font-size: 0.9rem;
+  }
+}

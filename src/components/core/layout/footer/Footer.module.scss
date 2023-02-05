@@ -1,0 +1,14 @@
+@import "../../../../utils/vars/vars.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 10px 20px;
+  background-color: rgba(98, 232, 255, 0.6);
+  box-shadow: 0 -1px 30px rgba(0, 0, 0, 0.1);
+  // .copyright {}
+  // .footerList {
+  //   .footerItem {
+  //     .footerLink {}}}
+}
