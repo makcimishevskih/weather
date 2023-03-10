@@ -6,3 +6,5 @@ export const CURRENT_WEATHER = `${BASE_URL}current.json${API_KEY}${AIR_QUAL}&q=`
 export const FORECAST_10_DAYS = `${BASE_URL}forecast.json${API_KEY}${AIR_QUAL}&days=10&alerts=no&q=`;
 export const CITY_DISTRICTS = `${BASE_URL}search.json${API_KEY}&q=`;
 export const ASTRO = `${BASE_URL}astronomy.json${API_KEY}`;
+
+export const DA_DATA = `https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address`;

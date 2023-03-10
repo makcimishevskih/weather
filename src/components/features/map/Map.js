@@ -14,28 +14,28 @@ const Map = () => {
   useEffect(() => {
     let map;
     let marker;
-    load()
-      .then((mapglAPI) => {
-        map = new mapglAPI.Map("map-container", {
-          center: [longitude, latitude],
-          zoom: 13,
-          key: GIS_KEY,
-        });
+    // load()
+    //   .then((mapglAPI) => {
+    //     map = new mapglAPI.Map("map-container", {
+    //       center: [longitude, latitude],
+    //       zoom: 13,
+    //       key: GIS_KEY,
+    //     });
 
-        return mapglAPI;
-      })
-      .then((mapglAPI) => {
-        marker = new mapglAPI.Marker(map, {
-          coordinates: map.getCenter(),
-          label: {
-            text: `Вы здесь`,
-          },
-        });
-      });
-    return () => {
-      map && map.destroy();
-      marker && marker.destroy();
-    };
+    //     return mapglAPI;
+    //   })
+    //   .then((mapglAPI) => {
+    //     marker = new mapglAPI.Marker(map, {
+    //       coordinates: map.getCenter(),
+    //       label: {
+    //         text: `Вы здесь`,
+    //       },
+    //     });
+    //   });
+    // return () => {
+    //   map && map.destroy();
+    //   marker && marker.destroy();
+    // };
   }, [latitude, longitude]);
 
   return (

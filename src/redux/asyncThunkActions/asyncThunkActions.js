@@ -2,11 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { fetchAPI } from "utils/services/fetch";
 
-export const fetchGeolocationInitAction = createAsyncThunk(
-  "weather/fetchGeolocationInit",
-  async ({ lat, lon }, thunkAPI) => fetchAPI.fetchCity({ lat, lon })
-);
-
 export const fetchWeatherInitAppAction = createAsyncThunk(
   "weather/fetchWeatherInitApp",
   async (city) => {
@@ -53,5 +48,4 @@ export const asyncThunks = {
   fetchCitysWeatherAction,
 
   fetchWeatherInitAppAction,
-  fetchGeolocationInitAction,
 };

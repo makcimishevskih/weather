@@ -5,11 +5,10 @@ import {
   CITY_DISTRICTS,
   CURRENT_WEATHER,
   FORECAST_10_DAYS,
+  DA_DATA,
 } from "@services/urls.js";
 
 const fetchCity = async ({ lat, lon }) => {
-  const url =
-    "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
   const token = "c394ae3ccaaf56f99554ad9c1de4296476218129";
   const query = { lat, lon, count: 1 };
 
@@ -24,7 +23,7 @@ const fetchCity = async ({ lat, lon }) => {
     body: JSON.stringify(query),
   };
 
-  return await fetch(url, options)
+  return await fetch(DA_DATA, options)
     .then((response) => response.json())
     .then((data) => formatData(data))
     .catch((error) => new Error("Error. Fetch error: ", error.message));
@@ -56,7 +55,7 @@ const fetchAstro = async (city = "Москва") => {
 
     if (!response.ok) {
       throw new Error(
-        `Error. Fetch response error: ${response.ok}.
+        `Error.  response error: ${response.ok}.
               Status:${response.status}`
       );
     }

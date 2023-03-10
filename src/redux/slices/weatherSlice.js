@@ -131,25 +131,6 @@ export const weatherSlice = createSlice({
       .addCase(asyncThunks.fetchWeatherInitAppAction.rejected, (state) => {
         state.loading = "idle";
         state.error = `fetchWeatherInitAppAction rejected`;
-      })
-
-      .addCase(asyncThunks.fetchGeolocationInitAction.pending, (state) => {
-        state.loading = "loading";
-        state.error = "";
-      })
-      .addCase(
-        asyncThunks.fetchGeolocationInitAction.fulfilled,
-        (state, { payload }) => {
-          state.city = payload[0];
-          state.district = payload[1];
-
-          state.loading = "idle";
-          state.error = "";
-        }
-      )
-      .addCase(asyncThunks.fetchGeolocationInitAction.rejected, (state) => {
-        state.loading = "idle";
-        state.error = `fetchGeolocationInitAction rejected`;
       });
   },
 });
