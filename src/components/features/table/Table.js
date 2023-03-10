@@ -6,6 +6,8 @@ import Thead from "./t-head/Thead.js";
 import Tbody from "./t-body/Tbody.js";
 import { dayUVIndex } from "@helpers/helpers";
 
+import { object, func } from "prop-types";
+
 const Table = ({ day, render }) => {
   const [ref, styles] = useInView(
     () => ({
@@ -30,7 +32,9 @@ const Table = ({ day, render }) => {
           <Thead day={day} />
           <Tbody day={day} />
         </table>
+        <div className={css.tableAstro}>
         {render()}
+        </div>
       </div>
       <div className={css.uv}>
         УФ-индекс: {day.day.uv}, {dayUVIndex(day.day.uv)}
@@ -40,3 +44,8 @@ const Table = ({ day, render }) => {
 };
 
 export default Table;
+
+Table.propTypes = {
+  day: object,
+  render: func,
+};

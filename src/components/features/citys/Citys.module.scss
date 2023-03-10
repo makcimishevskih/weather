@@ -17,8 +17,16 @@
 
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       cursor: pointer;
+      &:hover {
+        opacity: 0.6;
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
+      }
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
       .cityTemp {
         text-align: right;
+        width: 30px;
       }
       .cityIconWrapper {
         max-width: 40px;
@@ -31,6 +39,27 @@
       .city {
         width: 120px;
       }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .weatherAnotherCitys {
+    padding: 10px;
+    .cityTitle {
+    }
+    .cityList {
+      .cityItem {
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .weatherAnotherCitys {
+    padding: 15px;
+    .cityTitle {
+      text-align: center;
     }
   }
 }

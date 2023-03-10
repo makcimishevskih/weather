@@ -1,5 +1,4 @@
 import css from "./WeekWeather.module.scss";
-import { getMonthCutName, getCutWeekDay } from "@helpers/helpers.js";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,11 +7,15 @@ import "swiper/css/scrollbar";
 import { Link, useSearchParams } from "react-router-dom";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Navigation, Scrollbar, A11y } from "swiper";
+import { arrayOf, object } from "prop-types";
 
-// CДЕЛАТЬ WEEKWEATHERITEM
-// LINK TO DAY DATA AFTER CLICK
+import { getMonthCutName, getCutWeekDay } from "@helpers/helpers.js";
+
+import useResize from "@hooks/useResize";
 
 const WeekWeatherList = ({ days }) => {
+  const { windowWidth } = useResize();
+
   const md = new Date().getDate();
   const nmd = new Date(days[0].date).getDate();
 
@@ -27,6 +30,7 @@ const WeekWeatherList = ({ days }) => {
     }
 
     let [searchParams, setSearchParams] = useSearchParams();
+
     const handleClick = (dataId) => {
       setSearchParams(dataId);
     };
@@ -37,7 +41,6 @@ const WeekWeatherList = ({ days }) => {
     return (
       <SwiperSlide className={css.swiperItem} key={el.date + i}>
         <Link
-          // to={`/TenDaysWeather?${searchParams}`}
           to={`/TenDaysWeather/#${el.date + i}`}
           onClick={() => handleClick(el.date)}
         >
@@ -65,9 +68,11 @@ const WeekWeatherList = ({ days }) => {
 
   return (
     <Swiper
-      modules={[Navigation, Scrollbar, A11y]}
+      modules={[Navigation, Scrollbar]}
       spaceBetween={10}
-      slidesPerView={7}
+      slidesPerView={
+        windowWidth < 438 && windowWidth > 220 ? 3 : windowWidth > 768 ? 7 : 4
+      }
       scrollbar={{ draggable: true }}
       navigation
       className={css.list}
@@ -78,3 +83,7 @@ const WeekWeatherList = ({ days }) => {
 };
 
 export default WeekWeatherList;
+
+WeekWeatherList.propTypes = {
+  days: arrayOf(object),
+};

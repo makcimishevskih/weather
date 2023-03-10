@@ -1,5 +1,7 @@
 import css from "./WeatherItem.module.scss";
 
+import { string, number, shape } from "prop-types";
+
 const WeatherItem = ({ time, condition, temp_c }) => {
   return (
     <div
@@ -23,3 +25,12 @@ const WeatherItem = ({ time, condition, temp_c }) => {
 };
 
 export default WeatherItem;
+
+WeatherItem.propTypes = {
+  time: string,
+  temp_c: number,
+  condition: shape({
+    text: string,
+    icon: string,
+  }),
+};

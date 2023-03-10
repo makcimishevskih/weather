@@ -1,10 +1,11 @@
 import css from "./TenDaysWeather.module.scss";
+
 import tenDays from "@icons/tenDays.png";
 
+import { memo } from "react";
 import { useSelector } from "react-redux";
 
 import InfoPerDay from "@features/info-per-day";
-import { memo } from "react";
 
 const TenDaysWeather = memo(() => {
   const { city, district, days } = useSelector((state) => state.weather);

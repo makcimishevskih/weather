@@ -7,7 +7,12 @@
   .tableFlex {
     display: flex;
     table {
+      flex-grow: 1;
       border-collapse: collapse;
+    }
+    .tableAstro {
+      display: grid;
+      place-items: center;
     }
   }
   .uv {
@@ -15,5 +20,49 @@
     padding: 15px 0px 15px 20%;
 
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .tableWrapper {
+    .tableFlex {
+      table {
+      }
+      .tableAstro {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tableWrapper {
+      .tableFlex {
+        table {
+        }
+        .tableAstro {
+        }
+      }
+      .uv {
+        font-weight: 600;
+        padding: 15px 0px 15px 20%;
+
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .tableWrapper {
+    .tableFlex {
+      table {
+      }
+      .tableAstro {
+      }
+    }
+    .uv {
+      padding: 15px 0px 15px 10%;
+
+      font-size: 0.75rem;
+    }
   }
 }

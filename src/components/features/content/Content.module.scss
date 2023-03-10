@@ -1,11 +1,32 @@
 @import "../../../utils/vars/vars.scss";
 
 .content {
-  padding: 20px 0;
-
+  flex-grow: 1;
   .weatherToday {
-    max-height: 350px;
     display: flex;
+    justify-content: space-between;
+
     margin-bottom: $main-margin-bottom;
+  }
+}
+
+@media (max-width: 769px) {
+  .content {
+    .weatherToday {
+      flex-direction: column;
+      column-gap: 10px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 320px) {
+  .content {
+    margin-top: 90px;
   }
 }

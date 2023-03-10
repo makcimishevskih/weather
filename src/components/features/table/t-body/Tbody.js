@@ -1,8 +1,14 @@
-import { translateWeatherCondition } from "@helpers/helpers";
 import css from "./TBody.module.scss";
+
+import { translateWeatherCondition } from "@helpers/helpers";
+
+import { object } from "prop-types";
+import useResize from "@hooks/useResize";
 
 const Tbody = ({ day }) => {
   const timeOfADay = ["Утром", "Днём", "Вечером", "Ночью"];
+
+  const { windowWidth } = useResize();
 
   const dayWeather = [
     day.hours[7],
@@ -38,3 +44,7 @@ const Tbody = ({ day }) => {
 };
 
 export default Tbody;
+
+Tbody.propTypes = {
+  day: object,
+};

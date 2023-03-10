@@ -3,6 +3,8 @@ import css from "./InfoPerDay.module.scss";
 import Table from "@features/table";
 import Astro from "@features/astro";
 
+import { arrayOf, object } from "prop-types";
+
 const InfoPerDay = ({ days }) => {
   if (!!!Object.keys(days).length) return;
 
@@ -13,7 +15,13 @@ const InfoPerDay = ({ days }) => {
       days={days}
       id={el.date}
       render={() => (
-        <Astro astro={el.astro} borderRadius={false} backgroundColor={false} />
+        <div className={css.tableAstro}>
+          <Astro
+            astro={el.astro}
+            borderRadius={false}
+            backgroundColor={false}
+          />
+        </div>
       )}
     />
   ));
@@ -26,3 +34,7 @@ const InfoPerDay = ({ days }) => {
 };
 
 export default InfoPerDay;
+
+InfoPerDay.propTypes = {
+  days: arrayOf(object),
+};

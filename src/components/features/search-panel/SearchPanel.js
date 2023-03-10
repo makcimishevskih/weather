@@ -4,20 +4,20 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { fetchAPI } from "@services/fetch.js";
 import { coordsActions } from "@redux/slices/coordsSlice.js";
 import { weatherActions } from "@redux/slices/weatherSlice.js";
+import { asyncActions } from "@slices/weatherSlice";
 
 import useInput from "@hooks/useInput.js";
 
-import Input from "@features/input";
+import Input from "@features/ui/input";
 
 const SearchPanel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [, setSearchParams] = useSearchParams();
   const [cityName, resetCityName, handlers] = useInput("");
 
   const handleOnSubmit = (e) => {
@@ -26,16 +26,15 @@ const SearchPanel = () => {
     setError("");
     setSearchParams({ lat: "", lon: "" });
 
-    fetchAPI.fetchCurrentWeather(cityName)
-      .then((data) => {
-        setSearchParams({ lat: data.latitude, lon: data.longitude });
-        dispatch(coordsActions.getCoords([data.latitude, data.longitude]));
-        dispatch(weatherActions.changeCity(data.city));
-        navigate(`/?lat=${data.latitude}&lon=${data.longitude}`);
+    dispatch(asyncActions.fetchCurrentWeatherAction(cityName))
+      .then(({ payload: { latitude, longitude, city } }) => {
+        dispatch(coordsActions.getCoords([latitude, longitude]));
+        dispatch(weatherActions.changeCity(city));
+        navigate(`/?lat=${latitude}&lon=${longitude}`);
         resetCityName("");
       })
       .catch(() => {
-        navigate(`/notFoundPage/?lat=&lon=`);
+        navigate(`/not-found-page/?lat=&lon=`);
       });
   };
 
@@ -44,7 +43,7 @@ const SearchPanel = () => {
       <Input
         value={cityName}
         error={error}
-        placeholder="Введите название города"
+        placeholder="Введите город"
         {...handlers}
       />
     </form>

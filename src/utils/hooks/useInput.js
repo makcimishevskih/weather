@@ -6,15 +6,12 @@ const useInput = (initialValue) => {
   const onChange = useCallback((e) => {
     setValue(() => e.target.value);
   }, []);
-  const onFocus = useCallback((e) => {
-    // setValue(() => e.target.value);
-  }, []);
 
   const resetValue = () => {
     setValue(() => "");
   };
 
-  return [value, resetValue, { onChange, onFocus }];
+  return [value, resetValue, { onChange }];
 };
 
 export default useInput;

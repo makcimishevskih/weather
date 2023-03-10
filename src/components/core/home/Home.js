@@ -1,83 +1,77 @@
 import "./Home.scss";
-import { useEffect } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useGeolocated } from "react-geolocated";
+import { useSpring, animated } from "@react-spring/web";
 
 import { Outlet, useSearchParams } from "react-router-dom";
-
 import Header from "@layout/header";
 import Footer from "@layout/footer";
+import Loader from "@features/ui/loader";
 
 import { fetchAPI } from "@services/fetch.js";
 
 import { coordsActions } from "@redux/slices/coordsSlice.js";
-
-import { weatherActions } from "@redux/slices/weatherSlice.js";
-import { asyncActions } from "@redux/slices/weatherSlice.js";
-import Loader from "@features/loader";
-
-import { useSpring, animated } from "@react-spring/web";
+import { weatherActions, asyncActions } from "@redux/slices/weatherSlice.js";
 
 function Home() {
-  const { loading, city } = useSelector((state) => state.weather);
+  const { city, loading } = useSelector((state) => state.weather);
+  const { latitude, longitude } = useSelector((state) => state.coords);
   const dispatch = useDispatch();
 
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [, setSearchParams] = useSearchParams();
 
   const { coords } = useGeolocated({
     positionOptions: {
-      enableHighAccuracy: false,
+      enableHighAccuracy: true,
     },
     userDecisionTimeout: 1000,
+    watchPosition: true,
   });
 
-  useEffect(() => {
-    if (coords?.latitude && coords?.longitude && coords) {
-      const { latitude, longitude } = coords;
+  let lat = useMemo(() => coords?.latitude ?? latitude ?? 0);
+  let lon = useMemo(() => coords?.longitude ?? longitude ?? 0);
 
-      Promise.all([
-        fetchAPI.fetchCity(latitude, longitude).then((data) => {
-          dispatch(weatherActions.getCity(data));
-        }),
-        dispatch(coordsActions.getCoords([latitude, longitude])),
-      ]);
-      setSearchParams({ lat: coords.latitude, lon: coords.longitude });
-    }
+  useEffect(() => {
+    fetchAPI.fetchCity({ lat, lon }).then((data) => {
+      dispatch(weatherActions.getCity(data));
+      dispatch(coordsActions.getCoords([lat, lon]));
+      setSearchParams({ lat, lon });
+    });
   }, [coords]);
 
   useEffect(() => {
     if (city) {
-      Promise.all([
-        dispatch(asyncActions.fetchCurrentWeatherAction(city)),
-        dispatch(asyncActions.fetchForecastAction(city)),
-        dispatch(asyncActions.fetchAstroAction(city)),
-        dispatch(asyncActions.fetchDistrictsAction(city)),
-        dispatch(asyncActions.fetchCitysWeatherAction()),
-      ]);
+      dispatch(asyncActions.fetchWeatherInitAppAction(city));
     }
   }, [city]);
 
-  const styles = useSpring({
+  const stylesAnimation = useSpring({
     from: {
       opacity: 0,
-      scale: [0.5, 0.5, 0.5],
     },
     to: {
       opacity: 1,
-      scale: [1, 1, 1],
     },
     delay: 500,
   });
 
-  console.log("render");
-
   return (
-    <animated.div className="home" style={styles}>
+    <div className="home">
       <Header />
 
-      <Outlet />
+      <Suspense fallback={<Loader width={"100px"} height={"100px"} />}>
+        <animated.div className="outlet" style={stylesAnimation}>
+          {loading === "loading" ? (
+            <Loader width={"100px"} height={"100px"} />
+          ) : (
+            <Outlet />
+          )}
+        </animated.div>
+      </Suspense>
+
       <Footer />
-    </animated.div>
+    </div>
   );
 }
 

@@ -96,10 +96,10 @@ a:hover {
 // STYLES
 .container {
   max-width: 1000px;
+  padding: 0 10px;
   margin: 0 auto;
 }
+
 .outlet {
-  min-height: 100%;
   flex-grow: 1;
-  margin-bottom: $main-margin-bottom;
 }

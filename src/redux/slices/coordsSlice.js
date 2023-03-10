@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  latitude: null, // 0
-  longitude: null, // 0
+  latitude: 55.763908,
+  longitude: 37.60646,
 };
 
 export const coordsSlice = createSlice({

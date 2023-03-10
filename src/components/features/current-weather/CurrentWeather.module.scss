@@ -1,15 +1,18 @@
 @import "../../../utils/vars/vars.scss";
 
 .currentWeather {
-  flex-grow: 1;
-  border-radius: $main-border-radius;
-  overflow: hidden;
-  padding: 20px;
-  color: rgba(0, 0, 0, 0.8);
-  margin-right: 10px;
+  position: relative;
+  flex: 1 0 60%;
 
+  margin-right: 10px;
+  padding: 20px;
+  overflow: hidden;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+
+  border-radius: $main-border-radius;
+  .title {
+  }
   .subtitle {
-    font-size: 0.9em;
     font-weight: 400;
     opacity: 0.8;
     margin-bottom: 15px;
@@ -57,56 +60,87 @@
     display: flex;
     justify-content: flex-start;
 
-    padding: 0 30px 20px;
+    padding: 0 30px 40px;
     margin-bottom: $main-margin-bottom;
 
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
-    .wind,
-    .humidity,
-    .pressure {
-      position: relative;
-      font-weight: 600;
-    }
-    .wind:before,
-    .humidity:before,
-    .pressure:before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-
-      width: 20px;
-      height: 20px;
-
-      opacity: 0.5;
-    }
-
-    .wind {
-      &:before {
-        left: -50%;
-        background: url("../../../assets/icons/wind.png") no-repeat 50% 50% /
-          cover;
+    .weatherDataItem {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+      }
+      .wind,
+      .humidity,
+      .pressure {
+        padding-left: 10px;
+        font-weight: 600;
+      }
+      &:not(:last-child) {
+        margin-right: 20px;
       }
     }
+  }
+}
 
-    .humidity {
-      &:before {
-        left: -100%;
-        background: url("../../../assets/icons/humidity.png") no-repeat 50% 50% /
-          cover;
+@media (max-width: 768px) {
+  .currentWeather {
+    margin-right: 0;
+    margin-bottom: 10px;
+    .title {
+      font-size: 1.5rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+    }
+    .weatherInfo {
+      .weather {
+        .weatherDegree {
+          font-size: 3rem;
+        }
+        .imgWrapper {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      .weatherText {
+        font-size: 0.95rem;
+      }
+      .weatherData {
       }
     }
+  }
+}
 
-    .pressure {
-      &:before {
-        left: -50%;
-        background: url("../../../assets/icons/pressure.png") no-repeat 50% 50% /
-          cover;
-      }
+@media (max-width: 320px) {
+}
+
+@media (max-width: 400px) {
+  .wind {
+    &:before {
+      left: -0%;
+      background: url("../../../assets/icons/wind.png") no-repeat 50% 50% /
+        cover;
     }
-    & span:not(:last-child) {
-      margin-right: 10%;
+  }
+
+  .humidity {
+    &:before {
+      left: -100%;
+      background: url("../../../assets/icons/humidity.png") no-repeat 50% 50% /
+        cover;
+    }
+  }
+
+  .pressure {
+    &:before {
+      left: -50%;
+      background: url("../../../assets/icons/pressure.png") no-repeat 50% 50% /
+        cover;
     }
   }
 }

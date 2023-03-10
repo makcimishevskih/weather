@@ -7,7 +7,7 @@ const initialState = {
   citysWeather: [],
   district: "",
 
-  days: {},
+  days: [],
   astro: {},
   weather: {},
 
@@ -110,6 +110,46 @@ export const weatherSlice = createSlice({
       .addCase(asyncThunks.fetchCitysWeatherAction.rejected, (state) => {
         state.loading = "idle";
         state.error = `fetchCitysWeatherAction rejected`;
+      })
+
+      .addCase(asyncThunks.fetchWeatherInitAppAction.pending, (state) => {
+        state.loading = "loading";
+        state.error = "";
+      })
+      .addCase(
+        asyncThunks.fetchWeatherInitAppAction.fulfilled,
+        (state, { payload }) => {
+          state.weather = payload[0];
+          state.days = payload[1];
+          state.astro = payload[2];
+          state.citys = payload[3];
+          state.citysWeather = payload[4];
+          state.loading = "idle";
+          state.error = "";
+        }
+      )
+      .addCase(asyncThunks.fetchWeatherInitAppAction.rejected, (state) => {
+        state.loading = "idle";
+        state.error = `fetchWeatherInitAppAction rejected`;
+      })
+
+      .addCase(asyncThunks.fetchGeolocationInitAction.pending, (state) => {
+        state.loading = "loading";
+        state.error = "";
+      })
+      .addCase(
+        asyncThunks.fetchGeolocationInitAction.fulfilled,
+        (state, { payload }) => {
+          state.city = payload[0];
+          state.district = payload[1];
+
+          state.loading = "idle";
+          state.error = "";
+        }
+      )
+      .addCase(asyncThunks.fetchGeolocationInitAction.rejected, (state) => {
+        state.loading = "idle";
+        state.error = `fetchGeolocationInitAction rejected`;
       });
   },
 });

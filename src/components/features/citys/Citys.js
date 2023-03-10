@@ -2,22 +2,21 @@ import css from "./Citys.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { weatherActions } from "@redux/slices/weatherSlice.js";
 import { coordsActions } from "@redux/slices/coordsSlice.js";
-import { fetchAPI } from "@services/fetch";
 import { useSearchParams } from "react-router-dom";
+import { asyncActions } from "@slices/weatherSlice";
 
 const Citys = () => {
   const { citysWeather } = useSelector((state) => state.weather);
   const dispatch = useDispatch();
 
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [, setSearchParams] = useSearchParams();
 
   const handleClick = (city) => {
-    fetchAPI
-      .fetchCurrentWeather(city)
-      .then((data) => {
-        dispatch(weatherActions.changeCity(data.city));
-        dispatch(coordsActions.getCoords([data.latitude, data.longitude]));
-        setSearchParams({ lat: data.latitude, lon: data.longitude });
+    dispatch(asyncActions.fetchCurrentWeatherAction(city))
+      .then(({ payload: { latitude, longitude } }) => {
+        dispatch(weatherActions.changeCity(city));
+        dispatch(coordsActions.getCoords([latitude, longitude]));
+        setSearchParams({ lat: latitude, lon: longitude });
       })
       .then(() => window.scrollTo(0, 0));
   };

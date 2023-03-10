@@ -1,5 +1,7 @@
-import { NavLink } from "react-router-dom";
 import css from "./WeekWeather.module.scss";
+
+import { NavLink } from "react-router-dom";
+import { object, arrayOf } from "prop-types";
 
 import WeekWeatherList from "./WeekWeatherList";
 
@@ -12,7 +14,7 @@ const WeekWeather = ({ days, weather }) => {
         <h2 className={css.title}>Прогноз на 10 дней</h2>
         <div className={css.btnGroup}>
           <NavLink className={css.btn} to="/tenDaysWeather">
-            Подробный прогноз на 10 дней
+            Подробный прогноз
           </NavLink>
         </div>
       </header>
@@ -22,3 +24,8 @@ const WeekWeather = ({ days, weather }) => {
 };
 
 export default WeekWeather;
+
+WeekWeatherList.propTypes = {
+  days: arrayOf(object),
+  weather: object,
+};

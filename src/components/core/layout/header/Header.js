@@ -1,16 +1,23 @@
 import css from "./Header.module.scss";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import SearchPanel from "@features/search-panel";
+import Watch from "@features/ui/watch";
 
 const Header = () => {
   const coords = useSelector((state) => state.coords);
+  const navigate = useNavigate();
+
   const activeLinkStyle = {
     color: "white",
     textShadow: "0 1px 5px rgba(0,0,0,0.5)",
     transition: "all .1s ease-out",
+  };
+
+  const handleClick = () => {
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -22,8 +29,9 @@ const Header = () => {
               style={({ isActive }) => (isActive ? activeLinkStyle : undefined)}
               to={`/?lat=${coords.latitude}&lon=${coords.longitude}`}
               className={css.navigationLink}
+              onClick={handleClick}
             >
-              Main page
+              Главная
             </NavLink>
           </li>
           <li className={css.navigationItem}>
@@ -39,6 +47,7 @@ const Header = () => {
       </nav>
 
       <SearchPanel />
+      <Watch />
     </header>
   );
 };

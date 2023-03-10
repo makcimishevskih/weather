@@ -1,11 +1,16 @@
 import css from "./THead.module.scss";
+
 import { getWeekDay, cutSyntaxMonth, scrollToMyRef } from "@helpers/helpers.js";
+
 import { useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { object } from "prop-types";
+import useResize from "@hooks/useResize";
 
 const Thead = ({ day }) => {
   const { hash } = useLocation();
   const tableRef = useRef(null);
+  const { windowWidth } = useResize();
 
   useEffect(() => {
     let timerId;
@@ -24,14 +29,9 @@ const Thead = ({ day }) => {
     };
   }, [hash]);
 
-  const thText = [
-    "Давление, мм рт. ст",
-    "Влажность",
-    "Ветер, м/с",
-    "Ощущается как",
-  ];
-
-  const thEl = thText.map((text) => <th key={text}>{text}</th>);
+  const date = new Date(day.date).getDate();
+  let weekDay = getWeekDay(new Date(day.date).getDay());
+  const month = cutSyntaxMonth(day.date);
 
   const today = {
     date: new Date().getDate(),
@@ -42,16 +42,21 @@ const Thead = ({ day }) => {
     date: new Date().getDate() + 1,
   };
 
-  const date = new Date(day.date).getDate();
-  let weekDay = getWeekDay(new Date(day.date).getDay());
-  const month = cutSyntaxMonth(day.date);
-
   if (today.date === date) {
     weekDay = "Сегодня";
   }
   if (tomorrow.date === date) {
     weekDay = "Завтра";
   }
+
+  const thTitleText = [
+    "Давление, мм",
+    "Влажность",
+    "Ветер, м/с",
+    "Ощущается как",
+  ];
+
+  const thTitles = thTitleText.map((text) => <th key={text}>{text}</th>);
 
   const dateColorStyle =
     weekDay === "Сегодня" || weekDay === "Завтра"
@@ -61,7 +66,7 @@ const Thead = ({ day }) => {
   return (
     <thead className={css.thead} ref={tableRef} id={day.date}>
       <tr>
-        <th colSpan="3">
+        <th colSpan={windowWidth < 501 ? 2 : 3}>
           <h2 className={css.title} style={dateColorStyle}>
             {date}
             <div>
@@ -70,10 +75,14 @@ const Thead = ({ day }) => {
             </div>
           </h2>
         </th>
-        {thEl}
+        {thTitles}
       </tr>
     </thead>
   );
 };
 
 export default Thead;
+
+Thead.propTypes = {
+  day: object,
+};

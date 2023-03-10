@@ -1,12 +1,12 @@
 import css from "./WeatherList.module.scss";
 import WeatherItem from "./weather-item";
 
-// t tt tl ttl
-// tomorrow
+import { object, number } from "prop-types";
+
 const WeatherList = ({ today, tomorrow, sliceArrCount }) => {
   if (!today || !tomorrow) return;
 
-  const currentTime = 23;
+  const currentTime = new Date().getHours();
 
   const todayTimeWeather = today.hours
     .filter((el, i) => i >= currentTime)
@@ -15,7 +15,6 @@ const WeatherList = ({ today, tomorrow, sliceArrCount }) => {
   const tomorrowTimeWeather = today.hours
     .filter((el, i) => i <= currentTime)
     .slice(0, sliceArrCount - todayTimeWeatherLen);
-  // const tomorrowTimeWeatherLen = tomorrowTimeWeather.length;
 
   return (
     <div className={css.weatherList}>
@@ -30,3 +29,9 @@ const WeatherList = ({ today, tomorrow, sliceArrCount }) => {
 };
 
 export default WeatherList;
+
+WeatherList.propTypes = {
+  today: object,
+  tomorrow: object,
+  sliceArrCount: number,
+};

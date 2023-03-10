@@ -1,4 +1,4 @@
-import CityNotFound from "@features/city-not-found";
+import CityNotFound from "@core/city-not-found";
 
 const CityNotFoundPage = () => {
   return <CityNotFound />;

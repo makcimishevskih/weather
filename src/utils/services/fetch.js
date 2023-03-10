@@ -7,11 +7,11 @@ import {
   FORECAST_10_DAYS,
 } from "@services/urls.js";
 
-const fetchCity = async (latitude, longitude) => {
+const fetchCity = async ({ lat, lon }) => {
   const url =
     "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address";
   const token = "c394ae3ccaaf56f99554ad9c1de4296476218129";
-  const query = { lat: latitude, lon: longitude, count: 1 };
+  const query = { lat, lon, count: 1 };
 
   const options = {
     method: "POST",
@@ -36,13 +36,12 @@ const fetchCity = async (latitude, longitude) => {
       .trim()
       .split(", ")
       .slice(0, 2);
-    // .reverse();
 
     return format;
   }
 };
 
-const fetchAstro = async (city = "Moscow") => {
+const fetchAstro = async (city = "Москва") => {
   const y = new Date().getFullYear();
   let m =
     new Date().getMonth() < 10
@@ -130,7 +129,7 @@ const fetchAstro = async (city = "Moscow") => {
   }
 };
 
-const fetchForecast = async (city = "Moscow") => {
+const fetchForecast = async (city = "Москва") => {
   try {
     const response = await fetch(FORECAST_10_DAYS + city);
 
@@ -175,7 +174,7 @@ const fetchForecast = async (city = "Moscow") => {
   }
 };
 
-const fetchDistrics = async (city = "Moscow") => {
+const fetchDistrics = async (city = "Москва") => {
   try {
     const response = await fetch(`${CITY_DISTRICTS}${city}`);
 
@@ -187,28 +186,23 @@ const fetchDistrics = async (city = "Moscow") => {
     }
 
     const request = await response.json();
-    // const formatedRequest = formatData(request.forecast.forecastday);
 
     return request;
   } catch (err) {
     throw new Error("Error. Fetch error: ", err.message);
   }
-
-  // function formatData(data) {
-  //   return;
-  // }
 };
 
 const fetchCitysWeather = async () => {
   const citys = [
-    "Novosibirsk",
-    "Lipetsk",
-    "Krasnodar",
-    "Krasnoyarsk",
-    "Kaliningrad",
-    "Rostov",
-    "Vologda",
-    "Kaluga",
+    "Краснодар",
+    "Новосибирск",
+    "Липецк",
+    "Калининград",
+    "Мурманск",
+    "Вологда",
+    "Уфа",
+    "Красноярск",
   ];
 
   try {
@@ -250,7 +244,7 @@ const fetchCitysWeather = async () => {
   }
 };
 
-const fetchCurrentWeather = async (city = "Moscow") => {
+const fetchCurrentWeather = async (city = "Москва") => {
   try {
     const response = await fetch(CURRENT_WEATHER + city);
 

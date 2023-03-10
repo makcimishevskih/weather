@@ -2,6 +2,7 @@
 
 .tbody {
   position: relative;
+
   &:after,
   &:before {
     content: "";
@@ -29,22 +30,71 @@
       opacity: 0.5;
     }
     td {
-      padding: 0px 15px;
-
       font-size: 0.95rem;
       &:first-child {
         text-align: center;
       }
     }
     .conditionText {
-      max-width: 100px;
-      min-width: 80px;
     }
     .feelsLike,
     .dayTemp {
       &:after {
         content: "\00B0";
         font-weight: 500;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .tbody {
+    tr {
+      height: 50px;
+      td {
+        padding: 0 2px;
+        font-size: 0.8rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .tbody {
+    tr {
+      td {
+        font-size: 0.7rem;
+      }
+      .dayTime {
+        font-size: 0.65rem;
+      }
+      .conditionIconWrapper {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .tbody {
+    tr {
+      td {
+      }
+      .conditionText {
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .tbody {
+    tr {
+      td {
+        font-size: 0.6rem;
+      }
+      .conditionText {
+        word-wrap: break-word;
       }
     }
   }

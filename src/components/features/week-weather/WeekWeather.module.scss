@@ -8,11 +8,11 @@
   .weekWeatherHeader {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 600px;
+    justify-content: flex-start;
     margin-bottom: $main-margin-bottom;
-    // .title {
-    // }
+    .title {
+      margin-right: 40px;
+    }
     .btnGroup {
       .btn {
         padding: 5px 15px;
@@ -20,9 +20,6 @@
         color: rgb(46, 206, 255);
         outline: none;
         border-radius: 8px;
-        &:first-child {
-          margin-right: 15px;
-        }
       }
     }
   }
@@ -103,4 +100,75 @@
   transform: rotate(180deg);
   right: 0;
   background: blue;
+}
+
+@media (max-width: 768px) {
+  .weekWeather {
+    padding: 15px;
+    .weekWeatherHeader {
+      .title {
+        text-align: center;
+        font-size: 1.2rem;
+      }
+      .btnGroup {
+        .btn {
+          padding: 3px 10px;
+        }
+      }
+    }
+    .list {
+      .swiperItem {
+        .item {
+          .weekDay {
+            font-size: 1rem;
+          }
+          .temp,
+          .conditionText {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .weekWeather {
+    padding: 10px;
+    .weekWeatherHeader {
+      .title {
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .weekWeather {
+    padding: 10px;
+    .weekWeatherHeader {
+      .title {
+        width: 100px;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+      .btnGroup {
+        .btn {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 360px) {
+  .weekWeather {
+    .weekWeatherHeader {
+      .title {
+      }
+      .btnGroup {
+        .btn {
+        }
+      }
+    }
+  }
 }

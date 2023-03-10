@@ -2,6 +2,7 @@ import css from "./Astro.module.scss";
 
 import earth from "@icons/earth.png";
 import { translateMoonPhase } from "@helpers/helpers";
+import { bool, object } from "prop-types";
 
 const Astro = ({ astro, borderRadius, backgroundColor }) => {
   function formatAstro(obj) {
@@ -93,3 +94,9 @@ const Astro = ({ astro, borderRadius, backgroundColor }) => {
 };
 
 export default Astro;
+
+Astro.propTypes = {
+  astro: object,
+  borderRadius: bool,
+  backgroundColor: bool,
+};

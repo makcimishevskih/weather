@@ -1,13 +1,20 @@
 import css from "./CurrentWeather.module.scss";
 
-import cloud from "@images/cloud.webp";
+import { arrayOf, object, oneOfType } from "prop-types";
+
+import sun from "@images/sun.jpg";
 import mist from "@images/mist.jpg";
 import rain from "@images/rain.jpg";
 import snow from "@images/snow.jpg";
-import sun from "@images/sun.jpg";
+import cloud from "@images/cloud.webp";
+
+import wind from "@icons/wind.png";
+import humidity from "@icons/humidity.png";
+import pressure from "@icons/pressure.png";
+
+import { translateWeatherCondition } from "@helpers/helpers";
 
 import WeatherList from "@features/weather-list";
-import { translateWeatherCondition } from "@helpers/helpers";
 
 const CurrentWeather = ({ weather, days, location }) => {
   if (!!!Object.keys(days).length || !!!Object.keys(weather).length) return;
@@ -26,14 +33,14 @@ const CurrentWeather = ({ weather, days, location }) => {
     }
   }
 
-  const backgroundImage = {
-    background: `url(${defineBackgroundImage(
-      weather.conditionText.trim()
-    )}) no-repeat 50% 50% / cover`,
+  const currentImage = defineBackgroundImage(weather.conditionText.trim());
+
+  const imageStyle = {
+    background: `url(${currentImage}) no-repeat 50% 50% / cover`,
   };
 
   return (
-    <div className={css.currentWeather} style={backgroundImage}>
+    <div className={css.currentWeather} style={imageStyle}>
       <h2 className={css.title}>
         {location.city}
         {location.district ? `, ${location.district}` : ""}
@@ -56,11 +63,20 @@ const CurrentWeather = ({ weather, days, location }) => {
         </div>
       </div>
       <div className={css.weatherData}>
-        <span className={css.wind}>
-          {Math.round(weather.windKph)} м/с, {weather.windDirection}
-        </span>
-        <span className={css.humidity}>{weather.humidity}%</span>
-        <span className={css.pressure}>{weather.pressureMB} мм</span>
+        <div className={css.weatherDataItem}>
+          <img src={wind} alt="wind" />
+          <span className={css.wind}>
+            {Math.round(weather.windKph)} м/с, {weather.windDirection}
+          </span>
+        </div>
+        <div className={css.weatherDataItem}>
+          <img src={humidity} alt="humidity" />
+          <span className={css.humidity}>{weather.humidity}%</span>
+        </div>
+        <div className={css.weatherDataItem}>
+          <img src={pressure} alt="pressure" />
+          <span className={css.pressure}>{weather.pressureMB} мм</span>
+        </div>
       </div>
       <WeatherList today={days[0]} tomorrow={days[1]} sliceArrCount={8} />
     </div>
@@ -68,3 +84,9 @@ const CurrentWeather = ({ weather, days, location }) => {
 };
 
 export default CurrentWeather;
+
+CurrentWeather.propTypes = {
+  weather: object,
+  days: arrayOf(oneOfType([object])),
+  location: object,
+};

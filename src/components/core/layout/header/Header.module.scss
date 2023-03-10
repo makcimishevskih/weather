@@ -3,22 +3,24 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-
-  position: relative;
+  justify-content: space-between;
 
   padding: 10px 20px;
 
   background-color: rgba(98, 232, 255, 0.5);
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
   .navigation {
+    margin-right: 10px;
     .navigationList {
       display: flex;
+      align-items: center;
+      text-align: center;
+
       .navigationItem {
         &:not(:last-child) {
-          margin-right: 20px;
+          margin-right: 15px;
         }
       }
     }
@@ -28,7 +30,6 @@
       font-size: 1.2rem;
       font-weight: 400;
     }
-    // font-size: 1rem;
     .registrationBtn {
       margin-right: 10px;
       padding: 5px 15px;
@@ -38,6 +39,46 @@
     .enterBtn {
       padding: 5px 15px;
       color: red;
+    }
+  }
+}
+
+@media (max-width: 768) {
+  .header {
+    .navigation {
+      .navigationList {
+        .navigationItem {
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    font-size: 0.95rem;
+    .navigation {
+      .navigationList {
+        display: flex;
+        .navigationItem {
+          &:not(:last-child) {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320) {
+  .header {
+    .navigation {
+      .navigationList {
+      }
     }
   }
 }

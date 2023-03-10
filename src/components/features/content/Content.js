@@ -14,24 +14,26 @@ const Content = () => {
   );
 
   return (
-    <section className={css.content}>
-      <div className="container">
-        <div className={css.weatherToday}>
-          <CurrentWeather
-            weather={weather}
-            days={days}
-            location={{ city, district }}
-          />
-          {/* <Map width="500px" height="300px" /> */}
+    <>
+      <section className={css.content}>
+        <div className="container">
+          <div className={css.weatherToday}>
+            <CurrentWeather
+              weather={weather}
+              days={days}
+              location={{ city, district }}
+            />
+            <Map />
+          </div>
+
+          <WeekWeather weather={weather} days={days} />
+
+          <Info astro={astro} citys={citys} />
+
+          <InfoPerDay days={days} />
         </div>
-
-        <WeekWeather weather={weather} days={days} />
-
-        <Info astro={astro} citys={citys} />
-
-        <InfoPerDay days={days} />
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

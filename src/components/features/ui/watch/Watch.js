@@ -21,14 +21,9 @@ const Watch = () => {
     }));
   };
 
-  let ampm = new Date().getHours() >= 12 ? "pm" : "am";
-
   return (
     <div className={css.watch}>
-      <div className={css.date}>Date: {timer.date}</div>
-      <div className={css.time}>
-        Time: {timer.time} {ampm}
-      </div>
+      <div className={css.time}>{timer.time}</div>
     </div>
   );
 };
