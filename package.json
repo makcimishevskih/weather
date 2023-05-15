@@ -1,7 +1,6 @@
 {
 	"name": "weather",
 	"version": "0.1.0",
-	"homepage": "https://weather-m-i-portfolio.netlify.app",
 	"private": true,
 	"dependencies": {
 		"@2gis/mapgl": "^1.33.1",
