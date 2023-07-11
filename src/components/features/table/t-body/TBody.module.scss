@@ -1,102 +1,79 @@
-@import "../../../../utils/vars/vars.scss";
+@import '../../../../utils/vars/vars.scss';
 
 .tbody {
-  position: relative;
+	position: relative;
 
-  &:after,
-  &:before {
-    content: "";
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  &:after {
-    right: 0px;
-    top: 50%;
+	&:after,
+	&:before {
+		content: '';
+		position: absolute;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	&:after {
+		right: 0px;
+		top: 50%;
 
-    width: 1px;
-    height: 85%;
-    transform: translateY(-50%);
-  }
-  &:before {
-    left: 50%;
-    bottom: 0;
+		width: 1px;
+		height: 85%;
+		transform: translateY(-50%);
+	}
+	&:before {
+		left: 50%;
+		bottom: 0;
 
-    width: 90%;
-    height: 1px;
-    transform: translateX(-50%);
-  }
-  tr {
-    .dayTime {
-      opacity: 0.5;
-    }
-    td {
-      font-size: 0.95rem;
-      padding: 0 5px;
-      &:first-child {
-        text-align: center;
-      }
-    }
-    .conditionText {
-    }
-    .feelsLike,
-    .dayTemp {
-      &:after {
-        content: "\00B0";
-        font-weight: 500;
-      }
-    }
-  }
-}
+		width: 90%;
+		height: 1px;
+		transform: translateX(-50%);
+	}
+	tr {
+		.dayTime {
+			opacity: 0.5;
+			@media (max-width: 500px) {
+				font-size: 0.65rem;
+			}
+		}
+		.conditionIconWrapper {
+			@media (max-width: 500px) {
+				display: none;
+			}
+			@media (max-width: 640px) {
+				height: 50px;
+			}
+		}
+		td {
+			font-size: 0.95rem;
+			padding: 0 5px;
+			&:first-child {
+				text-align: center;
+			}
 
-@media (max-width: 640px) {
-  .tbody {
-    tr {
-      height: 50px;
-      td {
-        padding: 0 2px;
-        font-size: 0.8rem;
-        text-align: center;
-      }
-    }
-  }
-}
+			@media (max-width: 500px) {
+				font-size: 0.7rem;
+			}
+			@media (max-width: 420px) {
+				font-size: 0.6rem;
+			}
+			@media (max-width: 640px) {
+				padding: 0 2px;
 
-@media (max-width: 500px) {
-  .tbody {
-    tr {
-      td {
-        font-size: 0.7rem;
-      }
-      .dayTime {
-        font-size: 0.65rem;
-      }
-      .conditionIconWrapper {
-        display: none;
-      }
-    }
-  }
-}
-
-@media (max-width: 460px) {
-  .tbody {
-    tr {
-      td {
-      }
-      .conditionText {
-      }
-    }
-  }
-}
-
-@media (max-width: 420px) {
-  .tbody {
-    tr {
-      td {
-        font-size: 0.6rem;
-      }
-      .conditionText {
-        word-wrap: break-word;
-      }
-    }
-  }
+				font-size: 0.8rem;
+				text-align: center;
+			}
+		}
+		.conditionText {
+			@media (max-width: 420px) {
+				word-wrap: break-word;
+			}
+		}
+		.feelsLike {
+			text-align: center;
+		}
+		.feelsLike,
+		.dayTemp {
+			&:after {
+				content: '\00B0';
+				font-weight: 500;
+			}
+		}
+	}
 }

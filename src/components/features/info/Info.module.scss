@@ -1,22 +1,16 @@
-@import "../../../utils/vars/vars.scss";
+@import '../../../utils/vars/vars.scss';
 
 .info {
-  display: flex;
-  column-gap: 10px;
-  min-height: 420px;
+	display: flex;
+	column-gap: 10px;
+	min-height: 420px;
 
-  position: relative;
-  z-index: 1;
+	position: relative;
+	z-index: 1;
 
-  margin-bottom: $main-margin-bottom;
-}
-
-@media (max-width: 480px) {
-  .info {
-    flex-direction: column;
-    row-gap: 10px;
-  }
-}
-
-@media (max-width: 769px) {
+	margin-bottom: $main-margin-bottom;
+	@media (max-width: 480px) {
+		flex-direction: column;
+		row-gap: 10px;
+	}
 }

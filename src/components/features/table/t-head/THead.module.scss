@@ -1,88 +1,57 @@
-@import "../../../../utils/vars/vars.scss";
+@import '../../../../utils/vars/vars.scss';
 
 .thead {
-  position: relative;
-  &:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    width: 90%;
-    transform: translateX(-50%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  }
-  tr {
-    th {
-      font-size: 0.9rem;
-      padding: 0 2px;
-      color: rgba(0, 0, 0, 0.5);
-      .title {
-        padding: 0 5px;
-        display: flex;
-        align-items: center;
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		width: 90%;
+		transform: translateX(-50%);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	}
+	tr {
+		@media (max-width: 768px) {
+			height: 50px;
+		}
+		th {
+			font-size: 0.9rem;
+			padding: 0 5px;
+			color: rgba(0, 0, 0, 0.5);
 
-        font-size: 3rem;
-        font-weight: 500;
-        div {
-          padding: 5px 5px 0 5px;
-          span {
-            display: flex;
+			@media (max-width: 640px) {
+				padding: 0 5px;
 
-            font-size: 0.8rem;
-          }
-        }
-      }
-    }
-  }
-}
+				text-align: center;
+				font-size: 0.8rem;
+			}
 
-@media (max-width: 768px) {
-  .thead {
-    tr {
-      height: 50px;
-      th {
-        .title {
-          div {
-            span {
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media (max-width: 640px) {
-  .thead {
-    tr {
-      th {
-        text-align: center;
-        font-size: 0.8rem;
-        padding: 0 5px;
-        .title {
-          div {
-            span {
-            }
-          }
-        }
-      }
-    }
-  }
-}
+			@media (max-width: 420px) {
+				font-size: 0.55em;
+			}
+			.title {
+				padding: 0 5px;
+				display: flex;
+				align-items: center;
 
-@media (max-width: 420px) {
-  .thead {
-    tr {
-      th {
-        font-size: 0.55em;
+				font-size: 3rem;
+				font-weight: 500;
+				@media (max-width: 420px) {
+					font-size: 16rem;
+				}
+				div {
+					padding: 5px 5px 0 5px;
+					span {
+						display: flex;
 
-        .title {
-          font-size: 1.6rem;
-          div {
-            span {
-              font-size: 0.6rem;
-            }
-          }
-        }
-      }
-    }
-  }
+						font-size: 0.8rem;
+
+						@media (max-width: 420px) {
+							font-size: 0.6rem;
+						}
+					}
+				}
+			}
+		}
+	}
 }

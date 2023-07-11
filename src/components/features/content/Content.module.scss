@@ -1,32 +1,24 @@
-@import "../../../utils/vars/vars.scss";
+@import '../../../utils/vars/vars.scss';
 
 .content {
-  flex-grow: 1;
-  .weatherToday {
-    display: flex;
-    justify-content: space-between;
+	flex-grow: 1;
 
-    margin-bottom: $main-margin-bottom;
-  }
-}
+	@media (max-width: 480px) {
+		margin-top: 80px;
+	}
 
-@media (max-width: 769px) {
-  .content {
-    .weatherToday {
-      flex-direction: column;
-      column-gap: 10px;
-    }
-  }
-}
+	@media (max-width: 320px) {
+		margin-top: 90px;
+	}
+	.weatherToday {
+		display: flex;
+		justify-content: space-between;
 
-@media (max-width: 480px) {
-  .content {
-    margin-top: 80px;
-  }
-}
+		margin-bottom: $main-margin-bottom;
 
-@media (max-width: 320px) {
-  .content {
-    margin-top: 90px;
-  }
+		@media (max-width: 769px) {
+			flex-direction: column;
+			column-gap: 10px;
+		}
+	}
 }

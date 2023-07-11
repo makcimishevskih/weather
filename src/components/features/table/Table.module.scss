@@ -1,68 +1,39 @@
-@import "../../../utils/vars/vars.scss";
+@import '../../../utils/vars/vars.scss';
 
 .tableWrapper {
-  overflow: hidden;
-  background: $main-background-color;
-  border-radius: $main-border-radius;
-  .tableFlex {
-    display: flex;
-    table {
-      flex-grow: 1;
-      border-collapse: collapse;
-    }
-    .tableAstro {
-      display: grid;
-      place-items: center;
-    }
-  }
-  .uv {
-    font-weight: 600;
-    padding: 15px 0px 15px 20%;
+	overflow: hidden;
+	background: $main-background-color;
+	border-radius: $main-border-radius;
+	.tableFlex {
+		display: flex;
+		table {
+			flex-grow: 1;
+			border-collapse: collapse;
+		}
+		.tableAstro {
+			display: grid;
+			place-items: center;
+			@media (max-width: 900px) {
+				display: none;
+			}
+		}
+	}
+	.uv {
+		font-weight: 600;
+		padding: 15px 0px 15px 20%;
 
-    font-size: 0.9rem;
-  }
-}
+		font-size: 0.9rem;
 
-@media (max-width: 900px) {
-  .tableWrapper {
-    .tableFlex {
-      table {
-      }
-      .tableAstro {
-        display: none;
-      }
-    }
-  }
+		@media (max-width: 480px) {
+			padding: 15px 0px 15px 20%;
 
-  @media (max-width: 480px) {
-    .tableWrapper {
-      .tableFlex {
-        table {
-        }
-        .tableAstro {
-        }
-      }
-      .uv {
-        font-weight: 600;
-        padding: 15px 0px 15px 20%;
+			font-size: 0.8rem;
+			font-weight: 600;
+		}
+		@media (max-width: 400px) {
+			padding: 15px 0px 15px 10%;
 
-        font-size: 0.8rem;
-      }
-    }
-  }
-}
-@media (max-width: 400px) {
-  .tableWrapper {
-    .tableFlex {
-      table {
-      }
-      .tableAstro {
-      }
-    }
-    .uv {
-      padding: 15px 0px 15px 10%;
-
-      font-size: 0.75rem;
-    }
-  }
+			font-size: 0.75rem;
+		}
+	}
 }

@@ -1,25 +1,19 @@
 .watch {
-  font-size: 20px;
-  padding: 5px 10px;
-  border: 3px solid rgba(255, 255, 255, 0.4);
-  border-radius: 20px;
-  color: rgba(255, 255, 255, 1);
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-}
+	padding: 5px 10px;
 
-@media (max-width: 768px) {
-  .watch {
-  }
-}
+	font-size: 20px;
+	color: rgba(255, 255, 255, 1);
 
-@media (max-width: 480px) {
-  .watch {
-    display: none;
-    font-size: 0.9rem;
-  }
-}
-@media (max-width: 320px) {
-  .watch {
-    display: none;
-  }
+	border: 3px solid rgba(255, 255, 255, 0.4);
+	border-radius: 20px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+
+	@media (max-width: 480px) {
+		display: none;
+		font-size: 0.9rem;
+	}
+
+	@media (max-width: 320px) {
+		display: none;
+	}
 }
