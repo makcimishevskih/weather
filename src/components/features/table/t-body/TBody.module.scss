@@ -39,15 +39,12 @@
 			@media (max-width: 500px) {
 				display: none;
 			}
+			text-align: center;
 		}
 		td {
 			max-width: 70px;
 			font-size: 0.95rem;
-
-			&:first-child {
-				text-align: center;
-			}
-
+			text-align: center;
 			@media (max-width: 640px) {
 				padding: 0 2px;
 
