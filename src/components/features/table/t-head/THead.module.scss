@@ -16,18 +16,16 @@
 		}
 		th {
 			font-size: 0.9rem;
-			padding: 0 5px;
+			padding: 0 2px;
 			color: rgba(0, 0, 0, 0.5);
 
 			@media (max-width: 640px) {
-				padding: 0 5px;
-
 				text-align: center;
 				font-size: 0.8rem;
 			}
 
 			@media (max-width: 420px) {
-				font-size: 0.55em;
+				font-size: 0.6em;
 			}
 			.title {
 				padding: 0 5px;
@@ -37,7 +35,7 @@
 				font-size: 3rem;
 				font-weight: 500;
 				@media (max-width: 420px) {
-					font-size: 16rem;
+					font-size: 1.4rem;
 				}
 				div {
 					padding: 5px 5px 0 5px;

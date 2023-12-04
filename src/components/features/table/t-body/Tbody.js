@@ -3,12 +3,9 @@ import css from "./TBody.module.scss";
 import { translateWeatherCondition } from "@helpers/helpers";
 
 import { object } from "prop-types";
-import useResize from "@hooks/useResize";
 
 const Tbody = ({ day }) => {
   const timeOfADay = ["Утром", "Днём", "Вечером", "Ночью"];
-
-  const { windowWidth } = useResize();
 
   const dayWeather = [
     day.hours[7],
@@ -32,7 +29,7 @@ const Tbody = ({ day }) => {
         </td>
         <td>{(el.pressure_mb * 0.75).toFixed()}</td>
         <td>{el.humidity}%</td>
-        <td>
+        <td >
           {Math.round(el.wind_kph * (1000 / 3600))} {el.wind_dir.toLowerCase()}
         </td>
         <td className={css.feelsLike}>{el.feelslike_c.toFixed()}</td>

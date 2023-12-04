@@ -1,9 +1,13 @@
 @import '../../../utils/vars/vars.scss';
 
 .tenDaysWeather {
+	// margin-top: 10px;
 	@media (max-width: 480px) {
-		margin-top: 50px;
+		margin-top: 60px;
 		margin-bottom: 20px;
+	}
+	@media (max-width: 400px) {
+		margin-top: 80px;
 	}
 
 	.header {
@@ -24,7 +28,7 @@
 			padding-left: 60px;
 
 			@media (max-width: 480px) {
-				font-size: 1.5rem;
+				font-size: 1.2rem;
 				margin-bottom: 10px;
 			}
 		}
